@@ -1,4 +1,6 @@
 #' @export
 map <- function(f, ...) {
-  setNames(.mapply(f, list(...), list()), if (...length() > 0) names(..1))
+  res <- .mapply(f, list(...), list())
+  nm <- if (...length() > 0) names(..1)
+  setNames(res, nm)
 }
