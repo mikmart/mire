@@ -5,6 +5,7 @@
 #'
 #' @returns The vector `x` with adjacent repeated elements replaced with `value`.
 #' @seealso [rle()] to find runs of repeated elements.
+#' @seealso [tidyr::fill()] and [vctrs::vec_fill_missing()] for the reverse operation.
 #'
 #' @examples
 #' unfill(rep(1:3, 2:4))

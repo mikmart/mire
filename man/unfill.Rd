@@ -32,4 +32,6 @@ x
 }
 \seealso{
 \code{\link[=rle]{rle()}} to find runs of repeated elements.
+
+\code{\link[tidyr:fill]{tidyr::fill()}} and \code{\link[vctrs:vec_fill_missing]{vctrs::vec_fill_missing()}} for the reverse operation.
 }
