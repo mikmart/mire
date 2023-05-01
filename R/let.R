@@ -20,7 +20,7 @@ let <- function(expr, ...) {
   args <- eval(substitute(alist(...)))
 
   nams <- names(args)
-  if ((is.null(nams) || any(nams == "")) && length(args) > 0) {
+  if (length(nams) != length(args) || any(nams == "")) {
     stop("All arguments in `...` must be named.")
   }
 
