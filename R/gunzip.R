@@ -6,16 +6,19 @@
 #' compatibility with a function that doesn't accept connections and doesn't
 #' handle decompression.
 #'
-#' See [gzfile()] for supported compression types.
+#' If `file` is a connection, it will be wrapped with [gzcon()], automatically
+#' opened if necessary, and is always closed (and destroyed) afterwards.
 #'
-#' The batch size for I/O operations can be configured by setting the
+#' See the underlying [gzfile()] for an authoritative list of supported
+#' compression types. At time of writing at least `gzip`, `bzip2`, `xz` and
+#' `lzma` are supported.
+#'
+#' The batch size used for I/O operations can be configured by setting the
 #' `mire.gunzip.batch_size` option (in bytes). The default batch size is 50 MiB.
 #'
-#' @param file Path to a compressed file, or a connection. Connections will be
-#'   automatically opened if necessary, and are always closed (and destroyed)
-#'   afterwards.
+#' @param file Path to a compressed file, or a connection. See Details.
 #' @param dest Path to the destination file, or a connection. Must be given
-#'   explicitly if `file` is not a local file that exists.
+#'   explicitly if `file` is not a path that exists.
 #' @param force Set to `TRUE` to overwrite `file` with `dest`, if applicable.
 #'
 #' @returns The destination `dest`, invisibly.

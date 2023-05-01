@@ -7,12 +7,10 @@
 gunzip(file, dest = sub("\\\\.(gz|bz2|xz)$", "", file), force = FALSE)
 }
 \arguments{
-\item{file}{Path to a compressed file, or a connection. Connections will be
-automatically opened if necessary, and are always closed (and destroyed)
-afterwards.}
+\item{file}{Path to a compressed file, or a connection. See Details.}
 
 \item{dest}{Path to the destination file, or a connection. Must be given
-explicitly if \code{file} is not a local file that exists.}
+explicitly if \code{file} is not a path that exists.}
 
 \item{force}{Set to \code{TRUE} to overwrite \code{file} with \code{dest}, if applicable.}
 }
@@ -27,9 +25,14 @@ compatibility with a function that doesn't accept connections and doesn't
 handle decompression.
 }
 \details{
-See \code{\link[=gzfile]{gzfile()}} for supported compression types.
+If \code{file} is a connection, it will be wrapped with \code{\link[=gzcon]{gzcon()}}, automatically
+opened if necessary, and is always closed (and destroyed) afterwards.
 
-The batch size for I/O operations can be configured by setting the
+See the underlying \code{\link[=gzfile]{gzfile()}} for an authoritative list of supported
+compression types. At time of writing at least \code{gzip}, \code{bzip2}, \code{xz} and
+\code{lzma} are supported.
+
+The batch size used for I/O operations can be configured by setting the
 \code{mire.gunzip.batch_size} option (in bytes). The default batch size is 50 MiB.
 }
 \examples{
