@@ -1,5 +1,32 @@
+#' Decompress a file
+#'
+#' Decompress the full contents of a file (or connection) into another file (or
+#' connection). This can be useful if you need to access a compressed file in
+#' some external software that doesn't support decompression, or for
+#' compatibility with a function that doesn't accept connections and doesn't
+#' handle decompression.
+#'
+#' See [gzfile()] for supported compression types.
+#'
+#' The batch size for I/O operations can be configured by setting the
+#' `mire.gunzip.batch_size` option (in bytes). The default batch size is 50 MiB.
+#'
+#' @param file Path to a compressed file, or a connection. Connections will be
+#'   automatically opened if necessary, and are always closed (and destroyed)
+#'   afterwards.
+#' @param dest Path to the destination file, or a connection. Must be given
+#'   explicitly if `file` is not a local file that exists.
+#' @param force Set to `TRUE` to overwrite `file` with `dest`, if applicable.
+#'
+#' @returns The destination `dest`, invisibly.
+#' @seealso [gzfile()] and [gzcon()] to read compressed files directly.
+#'
+#' @examples
+#' gunzip(url("https://www.stats.ox.ac.uk/pub/datasets/csb/ch12.dat.gz"), "ch12.dat")
+#' head(read.table("ch12.dat"))
+#' unlink("ch12.dat") # Tidy up
 #' @export
-gunzip <- function(file, dest = sub("\\.gz$", "", file), force = FALSE) {
+gunzip <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FALSE) {
   stopifnot(!missing(dest) || is.character(file) && file.exists(file))
 
   if (is.character(file) && is.character(dest)) {
@@ -12,13 +39,18 @@ gunzip <- function(file, dest = sub("\\.gz$", "", file), force = FALSE) {
     on.exit(close(src), add = TRUE)
   } else {
     src <- gzcon(file)
+    if (!isOpen(src)) {
+      open(src, "rb")
+    }
+    on.exit(close(src), add = TRUE)
+    message("The source `file` connection will be closed and destroyed.")
   }
 
   # Establish destination connection
   if (is.character(dest)) {
-    message("Decompressing `file` into ", dest)
     dst <- file(dest, "wb")
     on.exit(close(dst), add = TRUE)
+    message("Decompressing `file` into ", dest)
   } else {
     dst <- dest
   }
