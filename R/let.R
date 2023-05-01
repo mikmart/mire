@@ -1,25 +1,35 @@
 #' Evaluate an expression in a modified context
 #'
-#' Similar to [with()], but with an interface optimized for modifying single
-#' symbols, sequential evaluation, and an argument order suitable for piping.
+#' Similar to [with()], but with an interface optimized for specifying single
+#' values, sequential evaluation, and an argument order suitable for piping. Can
+#' be used to avoid cluttering the environment with intermediate values, like a
+#' compact local scope. Inspired by the `let` expression in Haskell.
 #'
-#' @param expr Expression to evaluate after modifications.
-#' @param ... Name-value pairs giving values for symbols in `expr`. Evaluated
-#'   sequentially, so you can refer to previous names in subsequent pairs.
+#' @param expr Expression to evaluate. The input is captured before evaluation
+#'   in a context modified by assignments in `...`.
+#' @param ... Name-value pairs to assign in the evaluation context for `expr`.
+#'   Evaluated sequentially (before `expr`); you can refer to assignments from
+#'   previous arguments in subsequent ones.
 #'
 #' @return The value of evaluating `expr` in the modified context.
 #'
 #' @examples
-#' let(f(1:5), f = mean)
-#' let(mean(x), x = 1:5)
+#' let(x = 1, x + x)
 #'
-#' # Use previous assignments
+#' # Use earlier assignments
 #' let(x = 2, y = x + 3, y * y)
+#'
+#' # The equivalent local scope
+#' local({
+#'   x <- 2
+#'   y <- x + 3
+#'   y * y
+#' })
 #' @export
 let <- function(expr, ...) {
   args <- eval(substitute(alist(...)))
-
   nams <- names(args)
+
   if (length(nams) != length(args) || any(nams == "")) {
     stop("All arguments in `...` must be named.")
   }
@@ -31,3 +41,5 @@ let <- function(expr, ...) {
 
   eval(substitute(expr), vals)
 }
+
+# TODO: Probably a nice candidate to convert to C to save some microseconds?

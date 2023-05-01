@@ -7,22 +7,32 @@
 let(expr, ...)
 }
 \arguments{
-\item{expr}{Expression to evaluate after modifications.}
+\item{expr}{Expression to evaluate. The input is captured before evaluation
+in a context modified by assignments in \code{...}.}
 
-\item{...}{Name-value pairs giving values for symbols in \code{expr}. Evaluated
-sequentially, so you can refer to previous names in subsequent pairs.}
+\item{...}{Name-value pairs to assign in the evaluation context for \code{expr}.
+Evaluated sequentially (before \code{expr}); you can refer to assignments from
+previous arguments in subsequent ones.}
 }
 \value{
 The value of evaluating \code{expr} in the modified context.
 }
 \description{
-Similar to \code{\link[=with]{with()}}, but with an interface optimized for modifying single
-symbols, sequential evaluation, and an argument order suitable for piping.
+Similar to \code{\link[=with]{with()}}, but with an interface optimized for specifying single
+values, sequential evaluation, and an argument order suitable for piping. Can
+be used to avoid cluttering the environment with intermediate values, like a
+compact local scope. Inspired by the \code{let} expression in Haskell.
 }
 \examples{
-let(f(1:5), f = mean)
-let(mean(x), x = 1:5)
+let(x = 1, x + x)
 
-# Use previous assignments
+# Use earlier assignments
 let(x = 2, y = x + 3, y * y)
+
+# The equivalent local scope
+local({
+  x <- 2
+  y <- x + 3
+  y * y
+})
 }
