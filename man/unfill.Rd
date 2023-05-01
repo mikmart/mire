@@ -21,7 +21,7 @@ Replace repeated elements in a vector
 unfill(rep(1:3, 2:4))
 unfill(rep(c("A", "B"), 3:4), "")
 
-# Unfilling data frames can clarify grouping in a quick display
+# Unfilling can clarify row grouping in a quick display
 x <- expand_grid(
   foo = c("A", "B"),
   bar = c("a", "b", "c"),
@@ -31,7 +31,7 @@ x[] <- map(unfill, x, "")
 x
 }
 \seealso{
-\code{\link[=rle]{rle()}} to find runs of repeated elements.
-
 \code{\link[tidyr:fill]{tidyr::fill()}} and \code{\link[vctrs:vec_fill_missing]{vctrs::vec_fill_missing()}} for the reverse operation.
+
+\code{\link[=rle]{rle()}} to find runs of repeated elements.
 }
