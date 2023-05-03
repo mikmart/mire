@@ -1,24 +1,28 @@
 #define R_NO_REMAP
 #include <Rinternals.h>
 
+extern SEXP R_ExprSymbol;
+
 Rboolean is_pairlist_all_named(SEXP x) {
-  for (; !Rf_isNull(x); x = CDR(x))
-    if (Rf_isNull(TAG(x))) return FALSE;
+  for (; x != R_NilValue; x = CDR(x))
+    if (TAG(x) == R_NilValue) return FALSE;
   return TRUE;
 }
 
 SEXP ffi_let(SEXP call, SEXP op, SEXP args, SEXP rho) {
-  SEXP expr = CADR(args);
-  SEXP env = CADDR(args);
+  SEXP expr = Rf_findVar(R_ExprSymbol, rho);
   SEXP dots = Rf_findVar(R_DotsSymbol, rho);
 
-  if (dots != R_MissingArg) {
-    if (!is_pairlist_all_named(dots))
-      Rf_error("All arguments in `...` must be named.");
-    env = R_NewEnv(env, 1, Rf_length(dots));
-    for (SEXP cons = dots; !Rf_isNull(cons); cons = CDR(cons))
-      Rf_defineVar(TAG(cons), Rf_eval(R_PromiseExpr(CAR(cons)), env), env);
-  }
+  if (expr == R_MissingArg)
+    return R_NilValue;
+  if (dots == R_MissingArg)
+    return Rf_eval(PREXPR(expr), PRENV(expr));
+  if (!is_pairlist_all_named(dots))
+    Rf_error("All arguments in `...` must be named.");
 
-  return Rf_eval(expr, env);
+  SEXP env = R_NewEnv(PRENV(expr), 0, 0);
+  for (SEXP cons = dots; cons != R_NilValue; cons = CDR(cons))
+    Rf_defineVar(TAG(cons), Rf_eval(PREXPR(CAR(cons)), env), env);
+
+  return Rf_eval(PREXPR(expr), env);
 }

@@ -26,6 +26,4 @@
 #'   y * y
 #' })
 #' @export
-let <- function(expr, ...) {
-  .External2(ffi_let, substitute(expr), parent.frame())
-}
+let <- function(expr, ...) .External2(ffi_let)
