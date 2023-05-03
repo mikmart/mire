@@ -27,19 +27,5 @@
 #' })
 #' @export
 let <- function(expr, ...) {
-  args <- eval(substitute(alist(...)))
-  nams <- names(args)
-
-  if (length(nams) != length(args) || any(nams == "")) {
-    stop("All arguments in `...` must be named.")
-  }
-
-  vals <- new.env(parent = parent.frame())
-  for (i in seq_along(args)) {
-    assign(nams[i], eval(args[[i]], vals), vals)
-  }
-
-  eval(substitute(expr), vals)
+  .External2(ffi_let, substitute(expr), parent.frame())
 }
-
-# TODO: Probably a nice candidate to convert to C to save some microseconds?
