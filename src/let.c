@@ -20,9 +20,10 @@ SEXP ffi_let(SEXP call, SEXP op, SEXP args, SEXP rho) {
   if (!is_pairlist_all_named(dots))
     Rf_error("All arguments in `...` must be named.");
 
-  SEXP env = R_NewEnv(PRENV(expr), 0, 0);
+  SEXP env = PROTECT(R_NewEnv(PRENV(expr), 0, 0));
   for (SEXP cons = dots; cons != R_NilValue; cons = CDR(cons))
     Rf_defineVar(TAG(cons), Rf_eval(PREXPR(CAR(cons)), env), env);
 
+  UNPROTECT(1);
   return Rf_eval(PREXPR(expr), env);
 }
