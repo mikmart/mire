@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# mire
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+mire collects **mi**scellaneous **R e**xtensions that make the author's
+experience using R a little bit more pleasant.
+
+## Installation
+
+You can install the development version of mire from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mikmart/mire")
+```
+
+## Example
+
+The `let()` function (inspired by Haskell's `let` expression) can be used to
+sequentially declare local variables for evaluating an expression:
+
+```{r example}
+library(mire)
+
+let(x = 2, y = x + 3, y * y)
+```
