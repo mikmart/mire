@@ -3,5 +3,5 @@
     Code
       replace_if(c(1, NA, 3), 2, 42)
     Error <simpleError>
-      is.function(f) is not TRUE
+      '2' is not a function, character or symbol
 
