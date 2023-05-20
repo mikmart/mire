@@ -2,25 +2,34 @@
 % Please edit documentation in R/uniq.R
 \name{uniq}
 \alias{uniq}
-\title{Find adjacent repeated elements in a vector}
+\alias{uniql}
+\title{Drop adjacent repeated elements from a vector}
 \usage{
 uniq(x)
+
+uniql(x)
 }
 \arguments{
 \item{x}{A vector.}
 }
 \value{
-A logical vector of \code{length(x)}.
+For \code{uniq()}, the vector \code{x} with adjacent repeated elements
+removed. For \code{uniql()}, a logical vector of \code{length(x)}.
 }
 \description{
-Similarly to the Unix command \code{uniq}, find elements in a vector that are
-not the same as the preceding value.
+Similarly to the Unix command \code{uniq}, filter out elements in a vector that
+are the same as the preceding value. \code{uniql} returns a logical vector that
+can be used to identify them.
 }
 \examples{
 uniq(c(1, 1, 2, 1))
+uniql(c(1, 1, 2, 1))
 }
 \seealso{
 \code{\link[=unfill]{unfill()}} to replace adjacent repeated elements.
 
-\code{\link[=duplicated]{duplicated()}} to find repeated elements regardless of adjacency.
+\code{\link[=unique]{unique()}} and \code{\link[=duplicated]{duplicated()}} to find repeated elements regardless
+of adjacency.
+
+\code{\link[=rle]{rle()}} to find lengths of adjacent repeated runs.
 }

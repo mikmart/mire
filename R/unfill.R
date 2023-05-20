@@ -5,8 +5,7 @@
 #'
 #' @returns The vector `x` with adjacent repeated elements replaced with `value`.
 #' @seealso [tidyr::fill()] and [vctrs::vec_fill_missing()] for the reverse operation.
-#' @seealso [rle()] to find runs of repeated elements.
-#' @seealso [uniq()] to identify non-repeated elements.
+#' @seealso [uniql()] to identify non-repeated elements.
 #'
 #' @examples
 #' unfill(rep(1:3, 2:4))
@@ -14,5 +13,5 @@
 #' @export
 unfill <- function(x, value = NA) {
   stopifnot(length(value) == 1L)
-  replace(x, !uniq(x), value)
+  replace(x, !uniql(x), value)
 }

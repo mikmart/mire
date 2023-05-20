@@ -24,7 +24,5 @@ unfill(rep(c("A", "B"), 3:4), "")
 \seealso{
 \code{\link[tidyr:fill]{tidyr::fill()}} and \code{\link[vctrs:vec_fill_missing]{vctrs::vec_fill_missing()}} for the reverse operation.
 
-\code{\link[=rle]{rle()}} to find runs of repeated elements.
-
-\code{\link[=uniq]{uniq()}} to identify non-repeated elements.
+\code{\link[=uniql]{uniql()}} to identify non-repeated elements.
 }
