@@ -2,7 +2,7 @@
 % Please edit documentation in R/decompress.R
 \name{decompress}
 \alias{decompress}
-\title{Decompress a file}
+\title{Decompress a file or connection}
 \usage{
 decompress(file, dest = sub("\\\\.(gz|bz2|xz)$", "", file), force = FALSE)
 }

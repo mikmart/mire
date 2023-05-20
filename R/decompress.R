@@ -1,4 +1,4 @@
-#' Decompress a file
+#' Decompress a file or connection
 #'
 #' Decompress the full contents of a file (or connection) into another file (or
 #' connection). This can be useful if you need to access a compressed file in
