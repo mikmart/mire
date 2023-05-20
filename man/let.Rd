@@ -36,3 +36,6 @@ local({
   y * y
 })
 }
+\seealso{
+\code{\link[=with]{with()}} and \code{\link[=local]{local()}} that perform similar context changes.
+}

@@ -11,7 +11,8 @@
 #'   Evaluated sequentially (before `expr`); you can refer to assignments from
 #'   previous arguments in subsequent ones.
 #'
-#' @return The value of evaluating `expr` in the modified context.
+#' @returns The value of evaluating `expr` in the modified context.
+#' @seealso [with()] and [local()] that perform similar context changes.
 #'
 #' @examples
 #' let(x = 1, x + x)
