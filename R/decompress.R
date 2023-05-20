@@ -14,7 +14,7 @@
 #' `lzma` are supported.
 #'
 #' The batch size used for I/O operations can be configured by setting the
-#' `mire.gunzip.batch_size` option (in bytes). The default batch size is 50 MiB.
+#' `mire.decompress.batch_size` option (in bytes). The default batch size is 50 MiB.
 #'
 #' @param file Path to a compressed file, or a connection. See Details.
 #' @param dest Path to the destination file, or a connection. Must be given
@@ -25,11 +25,11 @@
 #' @seealso [gzfile()] and [gzcon()] to read compressed files directly.
 #'
 #' @examples
-#' gunzip(url("https://www.stats.ox.ac.uk/pub/datasets/csb/ch12.dat.gz"), "ch12.dat")
+#' decompress(url("https://www.stats.ox.ac.uk/pub/datasets/csb/ch12.dat.gz"), "ch12.dat")
 #' head(read.table("ch12.dat"))
 #' unlink("ch12.dat") # Tidy up
 #' @export
-gunzip <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FALSE) {
+decompress <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FALSE) {
   stopifnot(!missing(dest) || is.character(file) && file.exists(file))
 
   if (is.character(file) && is.character(dest)) {
@@ -59,7 +59,7 @@ gunzip <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FALSE)
   }
 
   # Copy raw data in batches from source to destination
-  BATCH_SIZE <- getOption("mire.gunzip.batch_size", 50 * 1024^2) # 50 MiB
+  BATCH_SIZE <- getOption("mire.decompress.batch_size", 50 * 1024^2) # 50 MiB
   repeat {
     bytes <- readBin(src, raw(), BATCH_SIZE)
     if (length(bytes) > 0) {
