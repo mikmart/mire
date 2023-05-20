@@ -2,7 +2,7 @@
 % Please edit documentation in R/unfill.R
 \name{unfill}
 \alias{unfill}
-\title{Replace repeated elements in a vector}
+\title{Replace adjacent repeated elements in a vector}
 \usage{
 unfill(x, value = NA)
 }
@@ -15,7 +15,7 @@ unfill(x, value = NA)
 The vector \code{x} with adjacent repeated elements replaced with \code{value}.
 }
 \description{
-Replace repeated elements in a vector
+Replace adjacent repeated elements in a vector
 }
 \examples{
 unfill(rep(1:3, 2:4))
@@ -25,4 +25,6 @@ unfill(rep(c("A", "B"), 3:4), "")
 \code{\link[tidyr:fill]{tidyr::fill()}} and \code{\link[vctrs:vec_fill_missing]{vctrs::vec_fill_missing()}} for the reverse operation.
 
 \code{\link[=rle]{rle()}} to find runs of repeated elements.
+
+\code{\link[=uniq]{uniq()}} to identify non-repeated elements.
 }
