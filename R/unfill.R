@@ -10,15 +10,6 @@
 #' @examples
 #' unfill(rep(1:3, 2:4))
 #' unfill(rep(c("A", "B"), 3:4), "")
-#'
-#' # Unfilling can clarify row grouping in a quick display
-#' x <- expand_grid(
-#'   foo = c("A", "B"),
-#'   bar = c("a", "b", "c"),
-#'   baz = c(1, 2)
-#' )
-#' x[] <- map(unfill, x, "")
-#' x
 #' @export
 unfill <- function(x, value = NA) {
   stopifnot(length(value) == 1L)
