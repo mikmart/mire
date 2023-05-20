@@ -22,6 +22,7 @@ uniq <- function(x) {
 }
 
 #' @rdname uniq
+#' @importFrom utils head tail
 #' @export
 uniql <- function(x) {
   if (length(x) == 0) return(logical())
