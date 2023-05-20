@@ -4,6 +4,8 @@
 # mire
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/mikmart/mire/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mikmart/mire/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 mire collects **mi**scellaneous **R e**xtensions that make the author’s
