@@ -13,9 +13,9 @@
 #' @seealso [split()] to split a vector into a list of batches.
 #'
 #' @examples
-#' batch(LETTERS, 5)
-#' batch(LETTERS, size = 5)
-#' batch(LETTERS, size = 5, balance = TRUE)
+#' batch(LETTERS, 8)
+#' batch(LETTERS, size = 8)
+#' batch(LETTERS, size = 8, balance = TRUE)
 #' @export
 batch <- function(x, n = NULL, size = NULL, balance = !is.null(n)) {
   if (is.null(n) && is.null(size)) {

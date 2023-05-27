@@ -24,9 +24,9 @@ Create an indicator for splitting a vector into \code{n} batches, or batches of 
 given \code{size}.
 }
 \examples{
-batch(LETTERS, 5)
-batch(LETTERS, size = 5)
-batch(LETTERS, size = 5, balance = TRUE)
+batch(LETTERS, 8)
+batch(LETTERS, size = 8)
+batch(LETTERS, size = 8, balance = TRUE)
 }
 \seealso{
 \code{\link[=split]{split()}} to split a vector into a list of batches.
