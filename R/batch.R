@@ -21,17 +21,16 @@
 #' split(iris, batch(iris, 2)) |> str()
 #' @export
 batch <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
-  UseMethod("batch")
-}
-
-#' @export
-batch.default <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
   if (is.null(n) && is.null(size)) {
     stop("Either `n` or `size` must be specified.")
   } else if (!is.null(n) && !is.null(size)) {
     stop("Either `n` or `size` must be specified, not both.")
   }
+  UseMethod("batch")
+}
 
+#' @export
+batch.default <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
   if (balance) {
     if (is.null(n)) {
       n <- ceiling(length(x) / size)
@@ -48,5 +47,5 @@ batch.default <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) 
 #' @rdname batch
 #' @export
 batch.data.frame <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
-  batch(seq_len(nrow(x)), n = n, size = size, ..., balance = balance)
+  batch.default(seq_len(nrow(x)), n = n, size = size, ..., balance = balance)
 }
