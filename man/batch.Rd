@@ -2,32 +2,37 @@
 % Please edit documentation in R/batch.R
 \name{batch}
 \alias{batch}
-\title{Create a batch indicator for splitting a vector}
+\alias{batch.data.frame}
+\title{Create a batch indicator for splitting an object}
 \usage{
-batch(x, n = NULL, size = NULL, balance = !is.null(n))
+batch(x, n = NULL, size = NULL, ..., balance = !is.null(n))
+
+\method{batch}{data.frame}(x, n = NULL, size = NULL, ..., balance = !is.null(n))
 }
 \arguments{
-\item{x}{A vector.}
+\item{x}{A vector or data frame.}
 
 \item{n}{An integer. The number of batches to create.}
 
 \item{size}{An integer. The size of batches to create.}
 
+\item{...}{Arguments passed on to further methods.}
+
 \item{balance}{Logical. Should batch sizes be (approximately) balanced?}
 }
 \value{
-An integer vector of \code{length(x)} identifying which batch each
-element of \code{x} belongs to.
+An integer vector suitable to use as an index to \code{\link[=split]{split()}} the
+object by.
 }
 \description{
-Create an indicator for splitting a vector into \code{n} batches, or batches of a
+Create an indicator for splitting an object into \code{n} batches, or batches of a
 given \code{size}.
 }
 \examples{
 batch(LETTERS, 8)
 batch(LETTERS, size = 8)
 batch(LETTERS, size = 8, balance = TRUE)
-}
-\seealso{
-\code{\link[=split]{split()}} to split a vector into a list of batches.
+
+# The data.frame method batches rows
+split(iris, batch(iris, 2)) |> str()
 }

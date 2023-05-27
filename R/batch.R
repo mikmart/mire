@@ -1,23 +1,31 @@
-#' Create a batch indicator for splitting a vector
+#' Create a batch indicator for splitting an object
 #'
-#' Create an indicator for splitting a vector into `n` batches, or batches of a
+#' Create an indicator for splitting an object into `n` batches, or batches of a
 #' given `size`.
 #'
-#' @param x A vector.
+#' @param x A vector or data frame.
 #' @param n An integer. The number of batches to create.
 #' @param size An integer. The size of batches to create.
+#' @param ... Arguments passed on to further methods.
 #' @param balance Logical. Should batch sizes be (approximately) balanced?
 #'
-#' @returns An integer vector of `length(x)` identifying which batch each
-#'   element of `x` belongs to.
-#' @seealso [split()] to split a vector into a list of batches.
+#' @returns An integer vector suitable to use as an index to [split()] the
+#'   object by.
 #'
 #' @examples
 #' batch(LETTERS, 8)
 #' batch(LETTERS, size = 8)
 #' batch(LETTERS, size = 8, balance = TRUE)
+#'
+#' # The data.frame method batches rows
+#' split(iris, batch(iris, 2)) |> str()
 #' @export
-batch <- function(x, n = NULL, size = NULL, balance = !is.null(n)) {
+batch <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
+  UseMethod("batch")
+}
+
+#' @export
+batch.default <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
   if (is.null(n) && is.null(size)) {
     stop("Either `n` or `size` must be specified.")
   } else if (!is.null(n) && !is.null(size)) {
@@ -35,4 +43,10 @@ batch <- function(x, n = NULL, size = NULL, balance = !is.null(n)) {
     }
     as.integer(1 + (seq_along(x) - 1) %/% size)
   }
+}
+
+#' @rdname batch
+#' @export
+batch.data.frame <- function(x, n = NULL, size = NULL, ..., balance = !is.null(n)) {
+  batch(seq_len(nrow(x)), n = n, size = size, ..., balance = balance)
 }
