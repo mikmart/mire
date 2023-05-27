@@ -12,6 +12,7 @@ Another miscellaneous collection of utilities that make the author's experience 
 Useful links:
 \itemize{
   \item \url{https://github.com/mikmart/mire}
+  \item \url{https://mikmart.github.io/mire/}
   \item Report bugs at \url{https://github.com/mikmart/mire/issues}
 }
 

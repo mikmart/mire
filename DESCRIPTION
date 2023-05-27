@@ -6,7 +6,8 @@ Authors@R:
 Description: Another miscellaneous collection of utilities that make the
     author's experience using R a little bit more pleasant.
 License: MIT + file LICENSE
-URL: https://github.com/mikmart/mire
+URL: https://github.com/mikmart/mire,
+    https://mikmart.github.io/mire/
 BugReports: https://github.com/mikmart/mire/issues
 Depends:
     R (>= 4.1)
