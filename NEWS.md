@@ -1,3 +1,7 @@
+# mire (development version)
+
+* Changed `unfill()` to accept a vector of `values` instead of a scalar `value`.
+
 # mire 0.1.0 (2023-10-29)
 
 * Changed `resample()` to a generic function for sampling with replacement.
