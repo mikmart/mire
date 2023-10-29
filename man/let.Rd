@@ -26,6 +26,9 @@ compact local scope. Inspired by the \code{let} expression in Haskell.
 \examples{
 let(x = 1, x + x)
 
+# Use with the forward pipe
+(x + x) |> let(x = 2)
+
 # Use earlier assignments
 let(x = 2, y = x + 3, y * y)
 
