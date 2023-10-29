@@ -16,6 +16,9 @@
     <loc>https://mikmart.github.io/mire/index.html</loc>
   </url>
   <url>
+    <loc>https://mikmart.github.io/mire/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://mikmart.github.io/mire/reference/batch.html</loc>
   </url>
   <url>
@@ -31,10 +34,16 @@
     <loc>https://mikmart.github.io/mire/reference/mire-package.html</loc>
   </url>
   <url>
+    <loc>https://mikmart.github.io/mire/reference/permute.html</loc>
+  </url>
+  <url>
     <loc>https://mikmart.github.io/mire/reference/replace_if.html</loc>
   </url>
   <url>
     <loc>https://mikmart.github.io/mire/reference/resample.html</loc>
+  </url>
+  <url>
+    <loc>https://mikmart.github.io/mire/reference/trapez.html</loc>
   </url>
   <url>
     <loc>https://mikmart.github.io/mire/reference/unfill.html</loc>
