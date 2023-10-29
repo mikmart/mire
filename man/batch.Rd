@@ -25,8 +25,8 @@ An integer vector suitable to use as an index to \code{\link[=split]{split()}} t
 object by.
 }
 \description{
-Create an indicator for splitting an object into \code{n} batches, or batches of a
-given \code{size}.
+A generic function to create an indicator for splitting an object into \code{n}
+batches, or batches of a given \code{size}. The \code{data.frame} method batches rows.
 }
 \examples{
 batch(LETTERS, 8)

@@ -2,9 +2,12 @@
 
 S3method(batch,data.frame)
 S3method(batch,default)
+S3method(permute,data.frame)
+S3method(permute,default)
 export(batch)
 export(decompress)
 export(let)
+export(permute)
 export(replace_if)
 export(resample)
 export(trapez)
