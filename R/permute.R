@@ -1,4 +1,4 @@
-#' Permute the order of an object
+#' Permute the order of elements in an object
 #'
 #' A generic function to generate a random permutation of an object. The default
 #' method is equivalent to `sample(x)` without surprises for numeric vectors of

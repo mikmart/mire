@@ -2,29 +2,38 @@
 % Please edit documentation in R/resample.R
 \name{resample}
 \alias{resample}
-\title{Sample a vector with replacement}
+\alias{resample.data.frame}
+\title{Sample elements from an object with replacement}
 \usage{
-resample(x, size, prob = NULL)
+resample(x, size = length(x), prob = NULL, ...)
+
+\method{resample}{data.frame}(x, size = nrow(x), prob = NULL, ...)
 }
 \arguments{
-\item{x}{either a vector of one or more elements from which to choose,
-    or a positive integer.  See \sQuote{Details.}}
+\item{x}{A vector or data frame.}
 
-\item{size}{a non-negative integer giving the number of items to choose.}
+\item{size}{A positive integer. The number of elements to sample.}
 
-\item{prob}{a vector of probability weights for obtaining the elements
-    of the vector being sampled.}
+\item{prob}{A numeric vector of sampling probability weights for each element
+in \code{x}.}
+
+\item{...}{Additional arguments passed on to methods.}
 }
 \value{
-A vector of length \code{size} with elements drawn from \code{x} or---if \code{x}
-is a positive number with length 1---from the integers \code{1:x}.
+An object with \code{size} elements drawn from \code{x} with replacement.
 }
 \description{
-Sample a vector with replacement
+A generic function to draw elements from an object with replacement. The
+default method is equivalent to \code{sample(x, replace = TRUE)} without surprises
+for numeric vectors of length 1. The \code{data.frame} method resamples rows.
 }
 \examples{
 resample(1:5)
+resample(5) # Compare to sample(5, replace = TRUE)
+
+# The data.frame method samples rows
+head(iris) |> resample()
 }
 \seealso{
-\code{\link[=sample]{sample()}} which this (extremely) thinly wraps.
+\code{\link[=sample]{sample()}} for general purpose random sampling.
 }

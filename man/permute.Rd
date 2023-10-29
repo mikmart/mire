@@ -3,7 +3,7 @@
 \name{permute}
 \alias{permute}
 \alias{permute.data.frame}
-\title{Permute the order of an object}
+\title{Permute the order of elements in an object}
 \usage{
 permute(x, ...)
 
