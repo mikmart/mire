@@ -1,7 +1,7 @@
 #' Create a batch indicator for splitting an object
 #'
-#' Create an indicator for splitting an object into `n` batches, or batches of a
-#' given `size`.
+#' A generic function to create an indicator for splitting an object into `n`
+#' batches, or batches of a given `size`. The `data.frame` method batches rows.
 #'
 #' @param x A vector or data frame.
 #' @param n An integer. The number of batches to create.
