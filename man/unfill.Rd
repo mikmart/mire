@@ -4,12 +4,12 @@
 \alias{unfill}
 \title{Replace adjacent repeated elements in a vector}
 \usage{
-unfill(x, value = NA)
+unfill(x, values = NA)
 }
 \arguments{
 \item{x}{A vector.}
 
-\item{value}{A replacement value of length 1.}
+\item{values}{Values assigned to repeated adjacent elements.}
 }
 \value{
 The vector \code{x} with adjacent repeated elements replaced with \code{value}.
