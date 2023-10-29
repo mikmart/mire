@@ -12,6 +12,7 @@
 #'
 #' @returns An object with `size` elements drawn from `x` with replacement.
 #' @seealso [sample()] for general purpose random sampling.
+#' @family sampling helpers
 #'
 #' @examples
 #' resample(1:5)

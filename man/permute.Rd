@@ -31,4 +31,8 @@ permute(iris) |> head()
 }
 \seealso{
 \code{\link[=sample]{sample()}} for general purpose random sampling.
+
+Other sampling helpers: 
+\code{\link{resample}()}
 }
+\concept{sampling helpers}

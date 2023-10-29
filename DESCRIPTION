@@ -1,6 +1,6 @@
 Package: mire
 Title: Mikko's Miscellaneous R Extensions
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Mikko", "Marttila", , "mikkmart@protonmail.com", role = c("aut", "cre"))
 Description: Another miscellaneous collection of utilities that make the

@@ -9,6 +9,7 @@
 #'
 #' @returns The object `x` with elements permuted in a random order.
 #' @seealso [sample()] for general purpose random sampling.
+#' @family sampling helpers
 #'
 #' @examples
 #' permute(1:5)
