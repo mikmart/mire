@@ -17,3 +17,8 @@ test_that("negative powers invert", {
   expect_equal(matpow(X, -1), Xinv)
   expect_equal(matpow(X, -2), Xinv %*% Xinv)
 })
+
+test_that("non-integer powers signal error", {
+  X <- matrix(1:4, 2, 2)
+  expect_error(matpow(X, 0.5))
+})

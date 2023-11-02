@@ -20,8 +20,8 @@
 #' @name matpow
 #' @export
 `%^%` <- function(x, n) {
-  x <- as.matrix(x)
-  n <- as.integer(n)
+  stopifnot(is.matrix(x), nrow(x) == ncol(x))
+  stopifnot(length(n) == 1, n == trunc(n))
   if (n < 0) {
     solve(x) %^% -n
   } else if (n == 0) {
