@@ -15,7 +15,7 @@ matpow(x, n)
 \item{n}{An integer power.}
 }
 \value{
-A matrix.
+A square matrix.
 }
 \description{
 Raise a square matrix to an integer power using exponentiation by squaring.
@@ -29,6 +29,9 @@ matrix(1:4, 2, 2) \%^\% 0
 
 # Negative powers invert
 matrix(1:4, 2, 2) \%^\% -1
+
+# Alternative regular function
+matpow(matrix(1:4, 2, 2), 2)
 }
 \seealso{
 \code{\link[=solve]{solve()}} to invert a matrix.

@@ -17,6 +17,9 @@
 #'
 #' # Negative powers invert
 #' matrix(1:4, 2, 2) %^% -1
+#'
+#' # Alternative regular function
+#' matpow(matrix(1:4, 2, 2), 2)
 #' @name matpow
 #' @export
 `%^%` <- function(x, n) {
@@ -41,4 +44,4 @@
 
 #' @rdname matpow
 #' @export
-matpow <- function(x, n) x %^% n
+matpow <- `%^%`
