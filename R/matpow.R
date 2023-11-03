@@ -15,11 +15,11 @@
 #' matrix(1:4, 2, 2) %^% 1
 #' matrix(1:4, 2, 2) %^% 0
 #'
-#' # Negative powers invert
+#' # Negative powers invert.
 #' matrix(1:4, 2, 2) %^% -1
 #'
-#' # Alternative regular function
-#' matpow(matrix(1:4, 2, 2), 2)
+#' # The pipe-friendly function form.
+#' matrix(1:4, 2, 2) |> matpow(2)
 #' @name matpow
 #' @export
 `%^%` <- function(x, n) {
