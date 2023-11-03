@@ -25,6 +25,9 @@ handle \code{NULL} inputs gracefully. Can be used to propagate \code{NULL} value
 through a pipeline of calls, or in combination with \verb{\%||\%} when optional
 function arguments with a \code{NULL} default need processing if provided.
 }
+\details{
+Inspired by the common monad known as Maybe or Option in various languages.
+}
 \examples{
 try(strsplit(NULL, ""))
 NULL \%>>\% \(x) strsplit(x, "")

@@ -5,6 +5,8 @@
 #' through a pipeline of calls, or in combination with `%||%` when optional
 #' function arguments with a `NULL` default need processing if provided.
 #'
+#' Inspired by the common monad known as Maybe or Option in various languages.
+#'
 #' @param x An object.
 #' @param f A function.
 #' @param ... Additional arguments passed to `f`.
