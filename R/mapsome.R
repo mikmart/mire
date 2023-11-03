@@ -20,7 +20,9 @@
 #' NULL |> mapsome(strsplit, "")
 #' @name mapsome
 #' @export
-`%>>%` <- function(x, f) mapsome(x, f)
+`%>>%` <- function(x, f) {
+  if (is.null(x)) x else f(x)
+}
 
 #' @rdname mapsome
 #' @export
