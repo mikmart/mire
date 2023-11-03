@@ -1,6 +1,8 @@
 # mire (development version)
 
 * Changed `unfill()` to accept a vector of `values` instead of a scalar `value`.
+* Added new function `mapsome()` and infix operator `%>>%` to apply a function
+  over a potentially null value.
 
 # mire 0.1.0 (2023-10-29)
 
