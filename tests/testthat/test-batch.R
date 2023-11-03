@@ -8,3 +8,8 @@ test_that("batching works", {
 test_that("data frames are batched by rows", {
   expect_equal(tabulate(batch(iris, 2)), c(75, 75))
 })
+
+test_that("signals appropriate errors for invalid input combinations", {
+  expect_snapshot(error = TRUE, batch(LETTERS))
+  expect_snapshot(error = TRUE, batch(LETTERS, n = 2, size = 2))
+})
