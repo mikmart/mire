@@ -1,6 +1,7 @@
 # mire (development version)
 
 * Changed `unfill()` to accept a vector of `values` instead of a scalar `value`.
+* Added new function `matpow()` and infix operator `%^%` for powers of a matrix.
 * Added new function `mapsome()` and infix operator `%>>%` to apply a function
   over a potentially null value.
 
