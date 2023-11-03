@@ -16,10 +16,12 @@ The scalar numeric integral value.
 Find the area under a curve of sample points with the trapezoidal rule.
 }
 \examples{
+\dontshow{if (getRversion() >= 4.3) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 trapez(c(0, 1, 2), c(1, 2, 0))
 
-# Calculate AUClast for each subject in the Indometh dataset
-Indometh |> by(~ Subject, with, trapez(c(0, time), c(0, conc)))
+# Calculate AUC for each subject in the Indometh dataset.
+Indometh |> by(~ Subject, with, trapez(time, conc))
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=integrate]{integrate()}} for general-purpose numeric integration.

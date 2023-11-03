@@ -7,11 +7,11 @@
 #' @returns The scalar numeric integral value.
 #' @seealso [integrate()] for general-purpose numeric integration.
 #'
-#' @examples
+#' @examplesIf getRversion() >= 4.3
 #' trapez(c(0, 1, 2), c(1, 2, 0))
 #'
-#' # Calculate AUClast for each subject in the Indometh dataset
-#' Indometh |> by(~ Subject, with, trapez(c(0, time), c(0, conc)))
+#' # Calculate AUC for each subject in the Indometh dataset.
+#' Indometh |> by(~ Subject, with, trapez(time, conc))
 #' @export
 trapez <- function(x, y) {
   stopifnot(length(x) == length(y))
