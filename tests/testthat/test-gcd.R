@@ -9,3 +9,7 @@ test_that("can find the gcd of floats", {
 test_that("missing values propagate", {
   expect_equal(gcd(c(1, NA)), NA_real_)
 })
+
+test_that("zero length vectors propagate", {
+  expect_equal(gcd(c()), numeric())
+})
