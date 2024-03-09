@@ -11,6 +11,6 @@
     Code
       let(nams)
     Condition
-      Error:
+      Error in `let()`:
       ! object 'nams' not found
 
