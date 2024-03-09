@@ -10,7 +10,7 @@ SEXP ffi_gcd(SEXP x) {
     return Rf_ScalarReal(NA_REAL);
 
   double res = fabs(xp[0]);
-  for (R_xlen_t i = 1; i < n; ++i)
+  for (R_xlen_t i = 1; i < n && res != 1; ++i)
     res = fgcd(res, xp[i]);
 
   return Rf_ScalarReal(res);
