@@ -7,17 +7,17 @@
 gcd(x)
 }
 \arguments{
-\item{x}{A numeric vector.}
+\item{x}{An integer vector.}
 }
 \value{
-A numeric vector of length 1.
+An integer vector of length 1.
 }
 \description{
-Find the greatest common divisor of all values in a numeric vector by
+Find the greatest common divisor of all values in an integer vector by
 repeated application of the Euclidean algorithm over all elements.
 }
 \details{
-\code{x} is coerced to a numeric vector if possible.
+\code{x} is coerced to an integer vector if possible.
 }
 \examples{
 gcd(c(48, 18, 39))

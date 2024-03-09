@@ -1,33 +1,30 @@
 #define R_NO_REMAP
 #include <Rinternals.h>
 
-static double fgcd(double a, double b);
-
-SEXP ffi_gcd(SEXP x) {
-  double *xp = REAL(x);
-  R_xlen_t n = Rf_length(x);
-  if (n <= 0)
-    return Rf_ScalarReal(NA_REAL);
-
-  double res = fabs(xp[0]);
-  for (R_xlen_t i = 1; i < n && res != 1; ++i)
-    res = fgcd(res, xp[i]);
-
-  return Rf_ScalarReal(res);
+int gcd(int a, int b) {
+  return b ? gcd(b, a % b) : a;
 }
 
-double fgcd(double a, double b) {
-  if (a < b)
-    return fgcd(b, a);
+SEXP ffi_gcd(SEXP x) {
+  R_xlen_t n = Rf_length(x);
 
-  double d;
-  do {
-    d = fmod(a, b);
-    if (!R_FINITE(d))
-      return fabs(d);
-    a = b;
-    b = d;
-  } while (d);
+  int *xp = INTEGER(x);
+  int res = NA_INTEGER;
+  int any_missing = 0;
 
-  return fabs(a);
+  for (R_xlen_t i = 0; i < n; ++i) {
+    if (xp[i] == NA_INTEGER)
+      any_missing = 1;
+    else if (res == NA_INTEGER)
+      res = xp[i];
+    else if (res != 1)
+      res = gcd(res, xp[i]);
+    else
+      break;
+  }
+
+  if (any_missing && res != 1)
+    res = NA_INTEGER;
+
+  return Rf_ScalarInteger(abs(res));
 }
