@@ -10,6 +10,6 @@ test_that("missing values propagate", {
   expect_equal(gcd(c(1, NA)), NA_real_)
 })
 
-test_that("zero length vectors propagate", {
-  expect_equal(gcd(c()), numeric())
+test_that("zero length vectors return NA", {
+  expect_equal(gcd(c()), NA_real_)
 })
