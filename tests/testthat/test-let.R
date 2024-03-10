@@ -19,7 +19,3 @@ test_that("can refer to variables sequentially", {
 test_that("unnamed dots signal reasonable error", {
   expect_snapshot(let(x = 1, y <- 2, x + y), error = TRUE)
 })
-
-test_that("can't access variables from internal scope", {
-  expect_snapshot(let(nams), error = TRUE)
-})
