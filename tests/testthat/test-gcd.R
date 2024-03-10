@@ -14,3 +14,8 @@ test_that("can determine gcd == 1 even with missing values", {
 test_that("zero length vectors return NA", {
   expect_equal(gcd(c()), NA_integer_)
 })
+
+test_that("zeroes are ignored", {
+  expect_equal(gcd(c(2, 0, 3)), 1)
+  expect_equal(gcd(c(0, 0, 0)), NA_integer_)
+})

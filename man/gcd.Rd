@@ -13,7 +13,7 @@ gcd(x)
 A positive-valued integer vector of length 1. The value is \code{1} if
 the GCD of non-missing elements is 1. The value is \code{NA} if there are any
 missing values \emph{and} the GCD of non-missing elements is greater than 1,
-or if \code{x} has length 0.
+if \code{x} has length 0, or if there are no non-zero values.
 }
 \description{
 Find the greatest common divisor of all values in an integer vector by
@@ -22,8 +22,8 @@ repeated application of the Euclidean algorithm.
 \details{
 \code{x} is coerced to an integer vector if possible.
 
-Evaluation short-circuits if the greatest common divisor of non-missing
-elements reaches 1.
+Zeroes are ignored. Evaluation short-circuits if the greatest common divisor
+of non-missing elements reaches 1.
 }
 \section{Why?}{
 

@@ -15,6 +15,8 @@ SEXP ffi_gcd(SEXP x) {
   for (R_xlen_t i = 0; i < n; ++i) {
     if (xp[i] == NA_INTEGER)
       any_missing = 1;
+    else if (xp[i] == 0)
+      continue;
     else if (res == NA_INTEGER)
       res = xp[i];
     else if (res != 1)
