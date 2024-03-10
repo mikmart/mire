@@ -51,16 +51,18 @@ decompress <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FA
       open(src, "rb")
     }
     on.exit(close(src), add = TRUE)
-    if (verbose)
+    if (verbose) {
       message("The source `file` connection will be closed and destroyed.")
+    }
   }
 
   # Establish destination connection
   if (is.character(dest)) {
     dst <- file(dest, "wb")
     on.exit(close(dst), add = TRUE)
-    if (verbose)
+    if (verbose) {
       message(sprintf("Decompressing `file` into \"%s\".", dest))
+    }
   } else {
     dst <- dest
   }
