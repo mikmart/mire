@@ -1,9 +1,7 @@
 # mire (development version)
 
 * Changed `unfill()` to accept a vector of `values` instead of a single `value`.
-* Added new function `matpow()` and infix operator `%^%` for powers of a matrix.
-* Added new function `mapsome()` and infix operator `%>>%` to apply a function
-  over a potentially null value.
+* Added new infix operator `%>>%` to apply a function over a potentially null value.
 * Added new function `gcd()` to find the greatest common divisor of a vector.
 
 # mire 0.1.0 (2023-10-29)
