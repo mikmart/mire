@@ -2,23 +2,23 @@
 % Please edit documentation in R/replace_if.R
 \name{replace_if}
 \alias{replace_if}
-\title{Replace values satisfying a predicate}
+\title{Replace values satisfying a predicate in a vector}
 \usage{
 replace_if(x, f, values)
 }
 \arguments{
 \item{x}{A vector.}
 
-\item{f}{A function, called with \code{x}. The return value is used to select
-elements in \code{x} to replace with \code{values}.}
+\item{f}{A function, called with \code{x}. The return value selects elements in
+\code{x} to replace with \code{values}.}
 
-\item{values}{Values assigned to elements of \code{x} satisfying \code{f}.}
+\item{values}{A vector of replacement values. Standard recycling rules apply.}
 }
 \value{
 The vector \code{x} with elements given by \code{f(x)} replaced with \code{values}.
 }
 \description{
-Replace values satisfying a predicate
+Replace values satisfying a predicate in a vector
 }
 \examples{
 replace_if(c(1, NA, 3), is.na, 42)

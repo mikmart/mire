@@ -5,7 +5,7 @@
 #' for numeric vectors of length 1. The `data.frame` method resamples rows.
 #'
 #' @param x A vector or data frame.
-#' @param size A positive integer. The number of elements to sample.
+#' @param size A non-negative integer. The number of elements to sample.
 #' @param prob A numeric vector of sampling probability weights for each element
 #'   in `x`.
 #' @param ... Additional arguments passed on to methods.

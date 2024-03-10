@@ -12,7 +12,7 @@ resample(x, size = length(x), prob = NULL, ...)
 \arguments{
 \item{x}{A vector or data frame.}
 
-\item{size}{A positive integer. The number of elements to sample.}
+\item{size}{A non-negative integer. The number of elements to sample.}
 
 \item{prob}{A numeric vector of sampling probability weights for each element
 in \code{x}.}

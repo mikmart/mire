@@ -2,9 +2,11 @@
 #'
 #' Find the area under a curve of sample points with the trapezoidal rule.
 #'
+#' `x` and `y` are sorted by `x` if needed.
+#'
 #' @param x,y Numeric vectors giving the coordinates of the sample points.
 #'
-#' @returns The scalar numeric integral value.
+#' @returns A numeric vector of length 1.
 #' @seealso [integrate()] for general-purpose numeric integration.
 #'
 #' @examplesIf getRversion() >= 4.3

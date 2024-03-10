@@ -1,11 +1,14 @@
 #' Replace adjacent repeated elements in a vector
 #'
-#' @param x A vector.
-#' @param values Values assigned to repeated adjacent elements.
+#' Replace adjacent repeated elements in a vector. This can be useful for
+#' creating clearly visually separated grouped displays.
 #'
-#' @returns The vector `x` with adjacent repeated elements replaced with `value`.
-#' @seealso [tidyr::fill()] and [vctrs::vec_fill_missing()] for the reverse operation.
+#' @param x A vector.
+#' @param values A vector of replacement values. Standard recycling rules apply.
+#'
+#' @returns The vector `x` with adjacent repeated elements replaced with `values`.
 #' @seealso [uniql()] to identify non-repeated elements.
+#' @seealso [tidyr::fill()] and [vctrs::vec_fill_missing()] for the reverse operation.
 #'
 #' @examples
 #' unfill(rep(1:3, 2:4))

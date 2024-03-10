@@ -6,8 +6,8 @@
 #'
 #' @param x A vector.
 #'
-#' @returns For `uniq()`, the vector `x` with adjacent repeated elements
-#'   removed. For `uniql()`, a logical vector of `length(x)`.
+#' @returns For `uniq()`, the vector `x` with adjacent repeated elements removed.
+#' @returns For `uniql()`, a logical vector of `length(x)`.
 #' @seealso [unfill()] to replace adjacent repeated elements.
 #' @seealso [unique()] and [duplicated()] to find repeated elements regardless
 #'   of adjacency.
@@ -17,9 +17,7 @@
 #' uniq(c(1, 1, 2, 1))
 #' uniql(c(1, 1, 2, 1))
 #' @export
-uniq <- function(x) {
-  x[uniql(x)]
-}
+uniq <- function(x) x[uniql(x)]
 
 #' @rdname uniq
 #' @importFrom utils head tail

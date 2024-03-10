@@ -9,10 +9,11 @@ decompress(file, dest = sub("\\\\.(gz|bz2|xz)$", "", file), force = FALSE)
 \arguments{
 \item{file}{Path to a compressed file, or a connection. See Details.}
 
-\item{dest}{Path to the destination file, or a connection. Must be given
-explicitly if \code{file} is not a path that exists.}
+\item{dest}{Path to the destination file, or a connection. Defaults to \code{file}
+with known compression extensions removed. Must be given explicitly if
+\code{file} is a connection.}
 
-\item{force}{Set to \code{TRUE} to overwrite \code{file} with \code{dest}, if applicable.}
+\item{force}{Logical. Should \code{file} be overwritten with \code{dest}, if applicable?}
 }
 \value{
 The destination \code{dest}, invisibly.
@@ -28,15 +29,14 @@ handle decompression.
 If \code{file} is a connection, it will be wrapped with \code{\link[=gzcon]{gzcon()}}, automatically
 opened if necessary, and is always closed (and destroyed) afterwards.
 
-See the underlying \code{\link[=gzfile]{gzfile()}} for an authoritative list of supported
-compression types. At time of writing at least \code{gzip}, \code{bzip2}, \code{xz} and
-\code{lzma} are supported.
+At time of writing at least \code{gzip}, \code{bzip2}, \code{xz} and \code{lzma} compression
+types are supported. See the underlying \code{\link[=gzfile]{gzfile()}} for an authoritative list.
 
 The batch size used for I/O operations can be configured by setting the
-\code{mire.decompress.batch_size} option (in bytes). The default batch size is 50 MiB.
+\code{mire.decompress.batch_size} option (in bytes). The default is 50 MiB.
 
-The emitted messages can be suppressed by setting the \code{mire.decompress.verbose}
-option to \code{FALSE}.
+Messages can be suppressed by setting the \code{mire.decompress.verbose} option
+to \code{FALSE}, or of course also with \code{suppressMessages()}.
 }
 \examples{
 decompress(url("https://www.stats.ox.ac.uk/pub/datasets/csb/ch12.dat.gz"), "ch12.dat")

@@ -1,9 +1,9 @@
-#' Replace values satisfying a predicate
+#' Replace values satisfying a predicate in a vector
 #'
 #' @param x A vector.
-#' @param f A function, called with `x`. The return value is used to select
-#'   elements in `x` to replace with `values`.
-#' @param values Values assigned to elements of `x` satisfying `f`.
+#' @param f A function, called with `x`. The return value selects elements in
+#'   `x` to replace with `values`.
+#' @param values A vector of replacement values. Standard recycling rules apply.
 #'
 #' @returns The vector `x` with elements given by `f(x)` replaced with `values`.
 #' @seealso [replace()] which this thinly wraps.

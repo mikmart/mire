@@ -9,20 +9,20 @@
 #' If `file` is a connection, it will be wrapped with [gzcon()], automatically
 #' opened if necessary, and is always closed (and destroyed) afterwards.
 #'
-#' See the underlying [gzfile()] for an authoritative list of supported
-#' compression types. At time of writing at least `gzip`, `bzip2`, `xz` and
-#' `lzma` are supported.
+#' At time of writing at least `gzip`, `bzip2`, `xz` and `lzma` compression
+#' types are supported. See the underlying [gzfile()] for an authoritative list.
 #'
 #' The batch size used for I/O operations can be configured by setting the
-#' `mire.decompress.batch_size` option (in bytes). The default batch size is 50 MiB.
+#' `mire.decompress.batch_size` option (in bytes). The default is 50 MiB.
 #'
-#' The emitted messages can be suppressed by setting the `mire.decompress.verbose`
-#' option to `FALSE`.
+#' Messages can be suppressed by setting the `mire.decompress.verbose` option
+#' to `FALSE`, or of course also with `suppressMessages()`.
 #'
 #' @param file Path to a compressed file, or a connection. See Details.
-#' @param dest Path to the destination file, or a connection. Must be given
-#'   explicitly if `file` is not a path that exists.
-#' @param force Set to `TRUE` to overwrite `file` with `dest`, if applicable.
+#' @param dest Path to the destination file, or a connection. Defaults to `file`
+#'   with known compression extensions removed. Must be given explicitly if
+#'   `file` is a connection.
+#' @param force Logical. Should `file` be overwritten with `dest`, if applicable?
 #'
 #' @returns The destination `dest`, invisibly.
 #' @seealso [gzfile()] and [gzcon()] to read compressed files directly.
@@ -52,7 +52,7 @@ decompress <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FA
     }
     on.exit(close(src), add = TRUE)
     if (verbose) {
-      message("The source `file` connection will be closed and destroyed.")
+      message("The source connection `file` will be closed and destroyed.")
     }
   }
 

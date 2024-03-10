@@ -9,20 +9,21 @@ unfill(x, values = NA)
 \arguments{
 \item{x}{A vector.}
 
-\item{values}{Values assigned to repeated adjacent elements.}
+\item{values}{A vector of replacement values. Standard recycling rules apply.}
 }
 \value{
-The vector \code{x} with adjacent repeated elements replaced with \code{value}.
+The vector \code{x} with adjacent repeated elements replaced with \code{values}.
 }
 \description{
-Replace adjacent repeated elements in a vector
+Replace adjacent repeated elements in a vector. This can be useful for
+creating clearly visually separated grouped displays.
 }
 \examples{
 unfill(rep(1:3, 2:4))
 unfill(rep(c("A", "B"), 3:4), "")
 }
 \seealso{
-\code{\link[tidyr:fill]{tidyr::fill()}} and \code{\link[vctrs:vec_fill_missing]{vctrs::vec_fill_missing()}} for the reverse operation.
-
 \code{\link[=uniql]{uniql()}} to identify non-repeated elements.
+
+\code{\link[tidyr:fill]{tidyr::fill()}} and \code{\link[vctrs:vec_fill_missing]{vctrs::vec_fill_missing()}} for the reverse operation.
 }

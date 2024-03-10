@@ -13,8 +13,9 @@ uniql(x)
 \item{x}{A vector.}
 }
 \value{
-For \code{uniq()}, the vector \code{x} with adjacent repeated elements
-removed. For \code{uniql()}, a logical vector of \code{length(x)}.
+For \code{uniq()}, the vector \code{x} with adjacent repeated elements removed.
+
+For \code{uniql()}, a logical vector of \code{length(x)}.
 }
 \description{
 Similarly to the Unix command \code{uniq}, filter out elements in a vector that

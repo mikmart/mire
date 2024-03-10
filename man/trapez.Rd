@@ -10,10 +10,13 @@ trapez(x, y)
 \item{x, y}{Numeric vectors giving the coordinates of the sample points.}
 }
 \value{
-The scalar numeric integral value.
+A numeric vector of length 1.
 }
 \description{
 Find the area under a curve of sample points with the trapezoidal rule.
+}
+\details{
+\code{x} and \code{y} are sorted by \code{x} if needed.
 }
 \examples{
 \dontshow{if (getRversion() >= 4.3) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

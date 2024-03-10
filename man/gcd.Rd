@@ -2,7 +2,7 @@
 % Please edit documentation in R/gcd.R
 \name{gcd}
 \alias{gcd}
-\title{Find the greatest common divisor}
+\title{Find the greatest common divisor of a vector}
 \usage{
 gcd(x)
 }
@@ -29,13 +29,15 @@ of non-missing elements reaches 1.
 
 
 Whenever I need GCD, I always seem to need \code{Reduce(pracma::gcd, x)},
-so I wanted an efficient version of that. Additionally, being limited to
-integers avoids issues with floating point arithmetic, and allows
-short-circuiting and special handling of missing values when it comes to
-GCD of 1.
+so I wanted an efficient version of that.
+
+Being limited to integers avoids issues with floating point arithmetic,
+and allows short-circuiting and special handling of missing values when
+it comes to GCD of 1.
 }
 
 \examples{
+gcd(c(48, 18))
 gcd(c(48, 18, 33))
 gcd(c(48, NA, 33))
 gcd(c(48, NA, 31))
