@@ -3,6 +3,7 @@
 * Changed `unfill()` to accept a vector of `values` instead of a single `value`.
 * Added new infix operator `%>>%` to apply a function over a potentially null value.
 * Added new function `gcd()` to find the greatest common divisor of a vector.
+* Added new option `mire.decompress.verbose` to control `decompress()` messages.
 
 # mire 0.1.0 (2023-10-29)
 
