@@ -16,6 +16,9 @@
 #' The batch size used for I/O operations can be configured by setting the
 #' `mire.decompress.batch_size` option (in bytes). The default batch size is 50 MiB.
 #'
+#' The emitted messages can be suppressed by setting the `mire.decompress.verbose`
+#' option to `FALSE`.
+#'
 #' @param file Path to a compressed file, or a connection. See Details.
 #' @param dest Path to the destination file, or a connection. Must be given
 #'   explicitly if `file` is not a path that exists.
@@ -36,6 +39,8 @@ decompress <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FA
     stopifnot(dest != file || force)
   }
 
+  verbose <- getOption("mire.decompress.verbose", TRUE)
+
   # Establish source connection
   if (is.character(file)) {
     src <- gzfile(file, "rb")
@@ -46,14 +51,16 @@ decompress <- function(file, dest = sub("\\.(gz|bz2|xz)$", "", file), force = FA
       open(src, "rb")
     }
     on.exit(close(src), add = TRUE)
-    message("The source `file` connection will be closed and destroyed.")
+    if (verbose)
+      message("The source `file` connection will be closed and destroyed.")
   }
 
   # Establish destination connection
   if (is.character(dest)) {
     dst <- file(dest, "wb")
     on.exit(close(dst), add = TRUE)
-    message("Decompressing `file` into ", dest)
+    if (verbose)
+      message(sprintf("Decompressing `file` into \"%s\".", dest))
   } else {
     dst <- dest
   }

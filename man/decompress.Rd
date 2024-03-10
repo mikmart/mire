@@ -34,6 +34,9 @@ compression types. At time of writing at least \code{gzip}, \code{bzip2}, \code{
 
 The batch size used for I/O operations can be configured by setting the
 \code{mire.decompress.batch_size} option (in bytes). The default batch size is 50 MiB.
+
+The emitted messages can be suppressed by setting the \code{mire.decompress.verbose}
+option to \code{FALSE}.
 }
 \examples{
 decompress(url("https://www.stats.ox.ac.uk/pub/datasets/csb/ch12.dat.gz"), "ch12.dat")
