@@ -4,6 +4,8 @@
 * Added new infix operator `%>>%` to apply a function over a potentially null value.
 * Added new function `gcd()` to find the greatest common divisor of a vector.
 * Added new option `mire.decompress.verbose` to control `decompress()` messages.
+* New `read_DESCRIPTION_from_tar()` reads the DESCRIPTION file from a package tar archive.
+* New `read_DESCRIPTION_from_zip()` reads the DESCRIPTION file from a package zip archive.
 
 # mire 0.1.0 (2023-10-29)
 
